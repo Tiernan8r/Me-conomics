@@ -1,0 +1,36 @@
+main: me.Tiernanator.Meconomics.Main
+version: 2.0
+name: Me-conomics
+description: It's ALL about da money money money...
+load: POSTWORLD
+author: Tiernanator
+website: None
+database: false
+depend: [Utilities, Factions, MagicSigns]
+prefix: Monee
+softdepend: []
+loadbefore: [Player_Menu]
+commands:
+    getBalance:
+        description: get your money balance.
+    setBalance:
+        description: set a player's money balance.
+#        permission: currency.set
+    addMoney:
+        description: add to a player's money balance.
+#        permission: currency.add
+#    shop:
+#        description: Open the Server wide shopfront and see whats for sale!
+        
+#permissions:
+#    Currency.*:
+#        description: Gives access to all Currency permissions.
+#        children:
+#            Currency.set: true
+#            Currency.add: true
+#    Currency.set:
+#        description: Allows you to set a player's money balance.
+#        default: op
+#    Currency.add:
+#        description: Allows you to add to a player's money balance.
+#        default: op
