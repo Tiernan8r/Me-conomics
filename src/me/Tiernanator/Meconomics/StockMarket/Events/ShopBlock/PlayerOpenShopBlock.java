@@ -11,7 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import me.Tiernanator.Colours.Colour;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Blocks.MultiBlocks;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
@@ -19,12 +19,12 @@ import me.Tiernanator.Utilities.Players.PlayerLogger;
 public class PlayerOpenShopBlock implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 	
 	private ChatColor warning = Colour.WARNING.getColour();
 	private ChatColor highlight = Colour.HIGHLIGHT.getColour();
 
-	public PlayerOpenShopBlock(Main main) {
+	public PlayerOpenShopBlock(MeconomicsMain main) {
 		plugin = main;
 	}
 

@@ -10,13 +10,9 @@ import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
 import me.Tiernanator.Utilities.Players.GetPlayer;
 
 public class SetBalance implements CommandExecutor {
-
-	@SuppressWarnings("unused")
-	private static Main plugin;
 
 	// I told you they recurred...(I did in TestPermission anyway)
 	private static ChatColor warning = Colour.WARNING.getColour();
@@ -25,13 +21,7 @@ public class SetBalance implements CommandExecutor {
 	private static ChatColor good = Colour.GOOD.getColour();
 
 	// this has to stay the Main class won't be happy.
-	public SetBalance(Main main) {
-		plugin = main;
-	}
-
-	// this has to stay the Main class won't be happy.
-	public static void setPlugin(Main main) {
-			plugin = main;
+	public SetBalance() {
 	}
 
 	// this Command Sends the player a message with their Group display name.

@@ -9,16 +9,16 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.Tiernanator.File.Log;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Demand;
 import me.Tiernanator.Meconomics.StockMarket.Price;
 
 public class DailyStockSaver extends BukkitRunnable {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
-	public DailyStockSaver(Main main) {
+	public DailyStockSaver(MeconomicsMain main) {
 		plugin = main;
 	}
 	
@@ -83,7 +83,7 @@ public class DailyStockSaver extends BukkitRunnable {
 		int startIndex = getI() * amountPerInterval + 1;
 		int endIndex = (1 + getI()) * amountPerInterval + 1;
 		
-		Log log = Main.getLog();
+		Log log = MeconomicsMain.getLog();
 		log.log("Beginning demand and price logging for entry " + startIndex + " to " + endIndex + " (" + (endIndex - startIndex) + " entries) of " + Material.values().length + ":");
 		
 		Date date = new Date(time);

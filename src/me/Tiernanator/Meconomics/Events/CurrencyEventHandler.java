@@ -11,12 +11,12 @@ import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Utilities.MetaData.MetaData;
 
 public class CurrencyEventHandler implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
 	ChatColor good = Colour.GOOD.getColour();
 	ChatColor highlight = Colour.HIGHLIGHT.getColour();
@@ -25,11 +25,11 @@ public class CurrencyEventHandler implements Listener {
 	// the partial path found in the config
 	String header = "Permissions.";
 
-	public CurrencyEventHandler(Main main) {
+	public CurrencyEventHandler(MeconomicsMain main) {
 		plugin = main;
 	}
 
-	public static void setPlugin(Main main) {
+	public static void setPlugin(MeconomicsMain main) {
 		plugin = main;
 	}
 	@EventHandler

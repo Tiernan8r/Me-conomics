@@ -12,19 +12,19 @@ import org.bukkit.inventory.ItemStack;
 
 import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Price;
 
 public class PlayerClickItemToBuy implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 	private ChatColor bad = Colour.BAD.getColour();
 	private ChatColor good = Colour.GOOD.getColour();
 	private ChatColor highlight = Colour.HIGHLIGHT.getColour();
 	private ChatColor informative = Colour.INFORMATIVE.getColour();
 
-	public PlayerClickItemToBuy(Main main) {
+	public PlayerClickItemToBuy(MeconomicsMain main) {
 		plugin = main;
 	}
 

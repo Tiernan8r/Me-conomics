@@ -4,14 +4,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 
 public class RunningTotalCalculator implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
-	public RunningTotalCalculator(Main main) {
+	public RunningTotalCalculator(MeconomicsMain main) {
 		plugin = main;
 	}
 

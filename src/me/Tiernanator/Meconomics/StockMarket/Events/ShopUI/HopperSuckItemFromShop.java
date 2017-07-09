@@ -6,15 +6,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.inventory.Inventory;
 
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 
 public class HopperSuckItemFromShop implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
-	public HopperSuckItemFromShop(Main main) {
+	public HopperSuckItemFromShop(MeconomicsMain main) {
 		plugin = main;
 	}
 

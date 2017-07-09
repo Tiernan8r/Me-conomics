@@ -11,19 +11,19 @@ import org.bukkit.event.Listener;
 import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.SignBlock;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Players.SelectAction;
 
 public class ShopFrontRemover implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
 	private ChatColor bad = Colour.BAD.getColour();
 	private ChatColor warning = Colour.WARNING.getColour();
 	private ChatColor good = Colour.GOOD.getColour();
 
-	public ShopFrontRemover(Main main) {
+	public ShopFrontRemover(MeconomicsMain main) {
 		plugin = main;
 	}
 

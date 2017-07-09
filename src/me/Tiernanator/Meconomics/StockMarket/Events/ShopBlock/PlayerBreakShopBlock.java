@@ -9,19 +9,19 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import me.Tiernanator.Colours.Colour;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Blocks.MultiBlocks;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 
 public class PlayerBreakShopBlock implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 	private ChatColor warning = Colour.WARNING.getColour();
 	private ChatColor highlight = Colour.HIGHLIGHT.getColour();
 	private ChatColor informative = Colour.INFORMATIVE.getColour();
 
-	public PlayerBreakShopBlock(Main main) {
+	public PlayerBreakShopBlock(MeconomicsMain main) {
 		plugin = main;
 	}
 

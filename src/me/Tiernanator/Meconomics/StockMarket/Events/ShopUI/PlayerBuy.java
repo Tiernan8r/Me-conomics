@@ -17,7 +17,7 @@ import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Demand;
 import me.Tiernanator.Meconomics.StockMarket.Price;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
@@ -29,12 +29,12 @@ import me.Tiernanator.Utilities.Players.PlayerLogger;
 public class PlayerBuy implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 	private ChatColor good = Colour.GOOD.getColour();
 	private ChatColor highlight = Colour.HIGHLIGHT.getColour();
 	private ChatColor informative = Colour.INFORMATIVE.getColour();
 
-	public PlayerBuy(Main main) {
+	public PlayerBuy(MeconomicsMain main) {
 		plugin = main;
 	}
 

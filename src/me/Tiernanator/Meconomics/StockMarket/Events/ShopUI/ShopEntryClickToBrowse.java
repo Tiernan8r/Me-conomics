@@ -15,7 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Demand;
 import me.Tiernanator.Meconomics.StockMarket.Price;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
@@ -29,9 +29,9 @@ import me.Tiernanator.Utilities.Players.PlayerLogger;
 public class ShopEntryClickToBrowse implements Listener {
 
 	@SuppressWarnings("unused")
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
-	public ShopEntryClickToBrowse(Main main) {
+	public ShopEntryClickToBrowse(MeconomicsMain main) {
 		plugin = main;
 	}
 
@@ -61,16 +61,16 @@ public class ShopEntryClickToBrowse implements Listener {
 			return;
 		}
 		
-		if(!ShopBlock.hasShop(ownerUUID)) {
-			return;
-		}
+//		if(!ShopBlock.hasShop(ownerUUID)) {
+//			return;
+//		}
 		
 		Block block = ShopBlock.getBlock(ownerUUID);
 		
 		if(block == null) {
 			return;
 		}
-		
+
 		Inventory shopInventory = null;
 		if(block.getState() instanceof DoubleChest) {
 			DoubleChest shop = (DoubleChest) block.getState();

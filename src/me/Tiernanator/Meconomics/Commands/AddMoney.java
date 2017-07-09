@@ -10,13 +10,9 @@ import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
 import me.Tiernanator.Utilities.Players.GetPlayer;
 
 public class AddMoney implements CommandExecutor {
-	
-	@SuppressWarnings("unused")
-	private static Main plugin;
 	
 	//I told you they recurred...(I did in TestPermission anyway)
 	private static ChatColor highlight = Colour.HIGHLIGHT.getColour();
@@ -26,8 +22,7 @@ public class AddMoney implements CommandExecutor {
 	
 	
 	// this has to stay the Main class won't be happy.
-	public AddMoney(Main main) {
-		plugin = main;
+	public AddMoney() {
 	}
 
 	//this Command Sends the player a message with their Group display name.

@@ -12,7 +12,6 @@ import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
-import me.Tiernanator.Meconomics.Main;
 
 public class GetBalance implements CommandExecutor {
 
@@ -26,11 +25,7 @@ public class GetBalance implements CommandExecutor {
 	private static ChatColor informative;
 	private static ChatColor warning;
 	
-	@SuppressWarnings("unused")
-	private static Main plugin;
-	
-	public GetBalance(Main main) {
-		plugin = main;
+	public GetBalance() {
 	}
 
 	//this Command Sends the player a message with their Group display name.

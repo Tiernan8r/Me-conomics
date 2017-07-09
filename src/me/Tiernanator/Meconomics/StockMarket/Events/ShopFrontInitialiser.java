@@ -11,21 +11,21 @@ import org.bukkit.event.Listener;
 import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.SignBlock;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 import me.Tiernanator.Utilities.Players.SelectAction;
 
 public class ShopFrontInitialiser implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
 	private ChatColor bad = Colour.BAD.getColour();
 	private ChatColor warning = Colour.WARNING.getColour();
 	private ChatColor good = Colour.GOOD.getColour();
 	private ChatColor highlight = Colour.HIGHLIGHT.getColour();
 
-	public ShopFrontInitialiser(Main main) {
+	public ShopFrontInitialiser(MeconomicsMain main) {
 		plugin = main;
 	}
 

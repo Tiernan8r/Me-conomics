@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Menu.Menu;
 import me.Tiernanator.Menu.MenuAction;
@@ -23,11 +23,11 @@ import me.Tiernanator.Utilities.Players.SelectAction;
 
 public class Shopper implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
 	private ChatColor bad = Colour.BAD.getColour();
 
-	public Shopper(Main main) {
+	public Shopper(MeconomicsMain main) {
 		plugin = main;
 	}
 

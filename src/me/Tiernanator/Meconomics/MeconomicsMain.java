@@ -1,9 +1,5 @@
 package me.Tiernanator.Meconomics;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,9 +24,8 @@ import me.Tiernanator.Meconomics.StockMarket.Events.ShopUI.ShopUIClose;
 import me.Tiernanator.Meconomics.StockMarket.Events.ShopUI.Shopper;
 import me.Tiernanator.Meconomics.StockMarket.Schedules.DailyStockSaver;
 import me.Tiernanator.SQL.SQLServer;
-import me.Tiernanator.SQL.MySQL.MySQL;
 
-public class Main extends JavaPlugin {
+public class MeconomicsMain extends JavaPlugin {
 
 	private static Log log;
 	
@@ -63,18 +58,13 @@ public class Main extends JavaPlugin {
 	public void onDisable() {
 
 		log.close();
-		try {
-			getSQL().closeConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
 	}
 
 	public void registerCommands() {
-		getCommand("getBalance").setExecutor(new GetBalance(this));
-		getCommand("setBalance").setExecutor(new SetBalance(this));
-		getCommand("addMoney").setExecutor(new AddMoney(this));
+		getCommand("getBalance").setExecutor(new GetBalance());
+		getCommand("setBalance").setExecutor(new SetBalance());
+		getCommand("addMoney").setExecutor(new AddMoney());
 //		getCommand("shop").setExecutor(new Shop(this));
 	}
 	
@@ -115,79 +105,30 @@ public class Main extends JavaPlugin {
 			
 	}
 	
-	private static MySQL mySQL;
-
 	private void initialiseSQL() {
 		
-		mySQL = new MySQL(SQLServer.HOSTNAME, SQLServer.PORT, SQLServer.DATABASE,
-				SQLServer.USERNAME, SQLServer.PASSWORD);
-
-		Connection connection = null;
-		try {
-			connection = mySQL.openConnection();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		Statement statement = null;
-		try {
-			statement = connection.createStatement();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		String query = "USE " + SQLServer.DATABASE.getInfo() + ";";
-
-		try {
-			statement.executeUpdate(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
 		// Want to log quantity sold of material in each hour/day/week/month...
 		// Probably have .yml initially, record amount put up for sale, saves to
 		// database daily.
 		// Same for amount sold
 
-		query = "CREATE TABLE IF NOT EXISTS Balance ( "
+		String query = "CREATE TABLE IF NOT EXISTS Balance ( "
 				+ "UUID varchar(36) NOT NULL ,"
 				+ "Money FLOAT(2));";
-
-		statement = null;
-		try {
-			statement = connection.createStatement();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			statement.execute(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		SQLServer.executeQuery(query);
 
 		query = "CREATE TABLE IF NOT EXISTS Demand ( "
 				+ "Material varchar(255) NOT NULL ,"
 				+ "Date BIGINT,"
 				+ "Demand int);";
+		SQLServer.executeQuery(query);
 
-		try {
-			statement.executeUpdate(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
 		query = "CREATE TABLE IF NOT EXISTS ItemPrices ( "
 				+ "Material varchar(255) NOT NULL ,"
 				+ "Date BIGINT,"
 				+ "Price FLOAT(2));";
+		SQLServer.executeQuery(query);
 
-		try {
-			statement.executeUpdate(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
 		query = "CREATE TABLE IF NOT EXISTS ShopBlocks ( "
 				+ "ID int NOT NULL AUTO_INCREMENT,"
 				+ "World varchar(15) NOT NULL, "
@@ -197,23 +138,8 @@ public class Main extends JavaPlugin {
 				+ "Owner varchar(36), "
 				+ "PRIMARY KEY (ID) "
 				+ ");";
+		SQLServer.executeQuery(query);
 
-		try {
-			statement.executeUpdate(query);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			statement.closeOnCompletion();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-
-	public static MySQL getSQL() {
-		return mySQL;
 	}
 
 }

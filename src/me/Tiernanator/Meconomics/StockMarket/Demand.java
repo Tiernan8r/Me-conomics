@@ -1,24 +1,21 @@
 package me.Tiernanator.Meconomics.StockMarket;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.bukkit.Material;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import me.Tiernanator.File.ConfigAccessor;
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
+import me.Tiernanator.SQL.SQLServer;
 
 public class Demand {
 
-	private static Main plugin;
-	public static void setPlugin(Main main) {
+	private static MeconomicsMain plugin;
+	public static void setPlugin(MeconomicsMain main) {
 		plugin = main;
 	}
 
@@ -52,18 +49,11 @@ public class Demand {
 
 		List<Demand> allDemands = new ArrayList<Demand>();
 
-		String query = "SELECT * FROM Demand WHERE Material = ?;";
+		String query = "SELECT * FROM Demand WHERE Material = '"
+				+ material.name() + "';";
 
-		Connection connection = Main.getSQL().getConnection();
-		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = SQLServer.getResultSet(query);
 		try {
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, material.name());
-			ResultSet resultSet = null;
-			resultSet = preparedStatement.executeQuery();
-			if (!resultSet.isBeforeFirst()) {
-				return allDemands;
-			}
 			while (resultSet.next()) {
 
 				long time = resultSet.getLong("Date");
@@ -72,7 +62,6 @@ public class Demand {
 				Demand demand = new Demand(material, amountDemanded, time);
 				allDemands.add(demand);
 			}
-			preparedStatement.closeOnCompletion();
 			resultSet.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,63 +116,10 @@ public class Demand {
 
 	public static void addDemand(Material material, long time, int demand) {
 
-		BukkitRunnable runnable = new BukkitRunnable() {
+		String statement = "INSERT INTO Demand (Material, Date, Demand) VALUES (?, ?, ?);";
+		Object[] values = new Object[]{material.name(), time, demand};
 
-			@Override
-			public void run() {
-
-				List<Demand> allDemands = getAllDemands(material);
-				if (allDemands != null) {
-					if (allDemands.size() > 27) {
-						Demand oldestDemand = allDemands.get(0);
-						removeDemand(oldestDemand);
-					}
-				}
-
-				String query = "INSERT INTO Demand (Material, Date, Demand) VALUES ('"
-						+ material.name() + "', '" + time + "', '" + demand
-						+ "');";
-
-				Connection connection = Main.getSQL().getConnection();
-				Statement statement = null;
-				try {
-					statement = connection.createStatement();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				try {
-					statement.execute(query);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			}
-		};
-		runnable.runTaskAsynchronously(plugin);
-
-		// List<Demand> allDemands = getAllDemands(material);
-		// if(allDemands != null) {
-		// if(allDemands.size() > 27) {
-		// Demand oldestDemand = allDemands.get(0);
-		// removeDemand(oldestDemand);
-		// }
-		// }
-		//
-		// String query = "INSERT INTO Demand (Material, Date, Demand) VALUES
-		// ('" + material.name() + "', '" + time + "', '" + demand + "');";
-		//
-		// Connection connection = Main.getSQL().getConnection();
-		// Statement statement = null;
-		// try {
-		// statement = connection.createStatement();
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
-		// try {
-		// statement.execute(query);
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
+		SQLServer.executePreparedStatement(statement, values);
 
 	}
 
@@ -191,6 +127,7 @@ public class Demand {
 		addDemand(demand.getMaterial(), demand.getTime(), demand.getDemand());
 	}
 
+	@SuppressWarnings("unused")
 	private static boolean hasPreviousDemand(Material material) {
 
 		List<Demand> allDemands = getAllDemands(material);
@@ -231,55 +168,10 @@ public class Demand {
 
 	public static void removeDemand(Material material, long date) {
 
-		BukkitRunnable runnable = new BukkitRunnable() {
+		String statement = "DELETE FROM Demand WHERE Material = ? AND Date = ?;";
+		Object[] values = new Object[] {material.name(), date};
+		SQLServer.executePreparedStatement(statement, values);
 
-			@Override
-			public void run() {
-
-				if (!hasPreviousDemand(material)) {
-					return;
-				}
-
-				String query = "DELETE FROM Demand " + "WHERE Material = '"
-						+ material.name() + "' AND " + "Date = '" + date + "';";
-
-				Connection connection = Main.getSQL().getConnection();
-				Statement statement = null;
-				try {
-					statement = connection.createStatement();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				try {
-					statement.execute(query);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			}
-		};
-		runnable.runTaskAsynchronously(plugin);
-
-		// if(!hasPreviousDemand(material)) {
-		// return;
-		// }
-		//
-		// String query = "DELETE FROM Demand "
-		// + "WHERE Material = '" + material.name() + "' AND "
-		// + "Date = '" + date + "';";
-		//
-		// Connection connection = Main.getSQL().getConnection();
-		// Statement statement = null;
-		// try {
-		// statement = connection.createStatement();
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
-		// try {
-		// statement.execute(query);
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
 	}
 
 	public static void removeDemand(Demand demand) {

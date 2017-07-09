@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.Meconomics.Main;
+import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Menu.Menu;
 import me.Tiernanator.Menu.MenuEntry;
@@ -19,9 +19,9 @@ import me.Tiernanator.Menu.MenuEvents.MenuCloseEvent;
 
 public class ShopUIClose implements Listener {
 
-	private static Main plugin;
+	private static MeconomicsMain plugin;
 
-	public ShopUIClose(Main main) {
+	public ShopUIClose(MeconomicsMain main) {
 		plugin = main;
 	}
 
