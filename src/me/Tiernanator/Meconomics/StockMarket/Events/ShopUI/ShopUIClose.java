@@ -13,9 +13,9 @@ import org.bukkit.inventory.ItemStack;
 
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
-import me.Tiernanator.Menu.Menu;
-import me.Tiernanator.Menu.MenuEntry;
-import me.Tiernanator.Menu.MenuEvents.MenuCloseEvent;
+import me.Tiernanator.Utilities.Menu.Menu;
+import me.Tiernanator.Utilities.Menu.MenuEntry;
+import me.Tiernanator.Utilities.Menu.MenuEvents.MenuCloseEvent;
 
 public class ShopUIClose implements Listener {
 
@@ -25,6 +25,7 @@ public class ShopUIClose implements Listener {
 		plugin = main;
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void cleanUpSalesLoreOnMenuClose(MenuCloseEvent event) {
 

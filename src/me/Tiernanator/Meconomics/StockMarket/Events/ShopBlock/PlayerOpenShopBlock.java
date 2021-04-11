@@ -10,10 +10,10 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Blocks.MultiBlocks;
+import me.Tiernanator.Utilities.Colours.Colour;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 
 public class PlayerOpenShopBlock implements Listener {
@@ -65,8 +65,7 @@ public class PlayerOpenShopBlock implements Listener {
 		
 		if(!ownerUUID.equalsIgnoreCase(playerUUID)) {
 			event.setCancelled(true);
-			PlayerLogger playerLogger = new PlayerLogger();
-			String ownerName = playerLogger.getPlayerNameByUUID(ownerUUID);
+			String ownerName = PlayerLogger.getPlayerNameByUUID(ownerUUID);
 			player.sendMessage(warning + "This chest is " + highlight + ownerName + warning + "'s shop and you cannot open it.");
 			return;
 		}

@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.SignBlock;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
+import me.Tiernanator.Utilities.Colours.Colour;
 import me.Tiernanator.Utilities.Players.SelectAction;
 
 public class ShopFrontRemover implements Listener {

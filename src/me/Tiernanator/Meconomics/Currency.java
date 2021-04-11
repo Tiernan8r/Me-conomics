@@ -3,7 +3,7 @@ package me.Tiernanator.Meconomics;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import me.Tiernanator.SQL.SQLServer;
+import me.Tiernanator.Utilities.SQL.SQLServer;
 
 public class Currency implements Listener {
 

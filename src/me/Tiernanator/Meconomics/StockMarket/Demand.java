@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.bukkit.Material;
 
-import me.Tiernanator.File.ConfigAccessor;
 import me.Tiernanator.Meconomics.MeconomicsMain;
-import me.Tiernanator.SQL.SQLServer;
+import me.Tiernanator.Utilities.File.ConfigAccessor;
+import me.Tiernanator.Utilities.SQL.SQLServer;
 
 public class Demand {
 

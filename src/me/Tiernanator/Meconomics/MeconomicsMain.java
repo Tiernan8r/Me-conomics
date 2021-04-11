@@ -3,7 +3,6 @@ package me.Tiernanator.Meconomics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.Tiernanator.File.Log;
 import me.Tiernanator.Meconomics.Commands.AddMoney;
 import me.Tiernanator.Meconomics.Commands.GetBalance;
 import me.Tiernanator.Meconomics.Commands.SetBalance;
@@ -23,7 +22,8 @@ import me.Tiernanator.Meconomics.StockMarket.Events.ShopUI.ShopEntryClickToBrows
 import me.Tiernanator.Meconomics.StockMarket.Events.ShopUI.ShopUIClose;
 import me.Tiernanator.Meconomics.StockMarket.Events.ShopUI.Shopper;
 import me.Tiernanator.Meconomics.StockMarket.Schedules.DailyStockSaver;
-import me.Tiernanator.SQL.SQLServer;
+import me.Tiernanator.Utilities.File.Log;
+import me.Tiernanator.Utilities.SQL.SQLServer;
 
 public class MeconomicsMain extends JavaPlugin {
 

@@ -10,10 +10,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Meconomics.Currency;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Price;
+import me.Tiernanator.Utilities.Colours.Colour;
 
 public class PlayerClickItemToBuy implements Listener {
 
@@ -36,8 +36,9 @@ public class PlayerClickItemToBuy implements Listener {
 		}
 
 		Inventory inventory = event.getInventory();
-
-		String menuName = inventory.getName();
+		
+//		String menuName = inventory.getName();
+		String menuName = event.getWhoClicked().getCustomName();
 		if (!menuName.contains("'s Shop:")) {
 			return;
 		}
@@ -90,7 +91,7 @@ public class PlayerClickItemToBuy implements Listener {
 				|| clickAction != InventoryAction.PLACE_ONE
 				|| clickAction != InventoryAction.PLACE_SOME) {
 			player.sendMessage(highlight + "" + amount + good
-					+ " of this item costs: " + informative + "£"
+					+ " of this item costs: " + informative + "ï¿½"
 					+ String.format("%.2f", totalCost));
 		}
 	}

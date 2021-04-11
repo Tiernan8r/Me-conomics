@@ -8,10 +8,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
 import me.Tiernanator.Utilities.Blocks.MultiBlocks;
+import me.Tiernanator.Utilities.Colours.Colour;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 
 public class PlayerBreakShopBlock implements Listener {
@@ -52,8 +52,7 @@ public class PlayerBreakShopBlock implements Listener {
 		
 		if(!ownerUUID.equalsIgnoreCase(playerUUID)) {
 			event.setCancelled(true);
-			PlayerLogger playerLogger = new PlayerLogger();
-			String ownerName = playerLogger.getPlayerNameByUUID(ownerUUID);
+			String ownerName = PlayerLogger.getPlayerNameByUUID(ownerUUID);
 			player.sendMessage(warning + "This chest is " + highlight + ownerName + warning + "'s shop and you cannot destroy it.");
 			return;
 		}

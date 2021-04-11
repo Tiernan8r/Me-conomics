@@ -7,11 +7,11 @@ import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.Tiernanator.File.Log;
 import me.Tiernanator.Meconomics.Currency;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Demand;
 import me.Tiernanator.Meconomics.StockMarket.Price;
+import me.Tiernanator.Utilities.File.Log;
 
 public class DailyStockSaver extends BukkitRunnable {
 

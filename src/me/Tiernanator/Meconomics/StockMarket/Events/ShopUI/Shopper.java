@@ -12,13 +12,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
-import me.Tiernanator.Menu.Menu;
-import me.Tiernanator.Menu.MenuAction;
-import me.Tiernanator.Menu.MenuEntry;
+import me.Tiernanator.Utilities.Colours.Colour;
+import me.Tiernanator.Utilities.Menu.Menu;
+import me.Tiernanator.Utilities.Menu.MenuAction;
+import me.Tiernanator.Utilities.Menu.MenuEntry;
 import me.Tiernanator.Utilities.Players.SelectAction;
 
 public class Shopper implements Listener {

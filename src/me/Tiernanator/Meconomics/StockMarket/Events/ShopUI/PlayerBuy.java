@@ -13,7 +13,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
@@ -21,9 +20,10 @@ import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.Demand;
 import me.Tiernanator.Meconomics.StockMarket.Price;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
-import me.Tiernanator.Menu.Menu;
-import me.Tiernanator.Menu.MenuEvents.MenuCloseEvent;
-import me.Tiernanator.Utilities.Items.Item;
+import me.Tiernanator.Utilities.Colours.Colour;
+import me.Tiernanator.Utilities.Items.ItemUtility;
+import me.Tiernanator.Utilities.Menu.Menu;
+import me.Tiernanator.Utilities.Menu.MenuEvents.MenuCloseEvent;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 
 public class PlayerBuy implements Listener {
@@ -49,10 +49,9 @@ public class PlayerBuy implements Listener {
 		}
 		
 		String ownerName = menuName.replace("'s Shop:", "");
-		ownerName = ownerName.replace("§" + ChatColor.DARK_PURPLE.getChar(), "");
+		ownerName = ownerName.replace("ï¿½" + ChatColor.DARK_PURPLE.getChar(), "");
 		
-		PlayerLogger playerLogger = new PlayerLogger();
-		String ownerUUID = playerLogger.getPlayerUUIDByName(ownerName);
+		String ownerUUID = PlayerLogger.getPlayerUUIDByName(ownerName);
 		Block shopBlock = ShopBlock.getBlock(ownerUUID);
 		if(shopBlock == null) {
 			return;
@@ -68,7 +67,7 @@ public class PlayerBuy implements Listener {
 			if(playerItem == null) {
 				continue;
 			}
-			if(!Item.hasLore(playerItem)) {
+			if(!ItemUtility.hasLore(playerItem)) {
 				continue;
 			}
 			
@@ -121,7 +120,7 @@ public class PlayerBuy implements Listener {
 		}
 		
 		Currency.addToPlayerBalance(player, -cost);
-		player.sendMessage(good + "The total transaction cost was: " + informative + "£" + String.format("%.2f", cost) + good + ".");
+		player.sendMessage(good + "The total transaction cost was: " + informative + "ï¿½" + String.format("%.2f", cost) + good + ".");
 		double balance = Currency.getPlayerBalance(player);
 		FactionAccessor factionAccessor = new FactionAccessor(player);
 		Faction playerFaction = factionAccessor.getPlayerFaction();

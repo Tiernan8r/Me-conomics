@@ -11,12 +11,12 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.Tiernanator.File.Log;
 import me.Tiernanator.Meconomics.MeconomicsMain;
-import me.Tiernanator.SQL.SQLServer;
 import me.Tiernanator.Utilities.Blocks.MultiBlocks;
-import me.Tiernanator.Utilities.Items.Item;
+import me.Tiernanator.Utilities.File.Log;
+import me.Tiernanator.Utilities.Items.ItemUtility;
 import me.Tiernanator.Utilities.Players.GetPlayer;
+import me.Tiernanator.Utilities.SQL.SQLServer;
 
 public class ShopBlock {
 
@@ -26,6 +26,7 @@ public class ShopBlock {
 		plugin = main;
 	}
 
+	@SuppressWarnings("deprecation")
 	public static ItemStack resolveLorePricing(ItemStack item) {
 
 		Log log = MeconomicsMain.getLog();
@@ -55,13 +56,13 @@ public class ShopBlock {
 				}
 				if (itemLore.contains(ChatColor.DARK_PURPLE + "- ")
 						&& (itemLore.contains("sold today")
-								|| itemLore.contains("£"))) {
+								|| itemLore.contains("ï¿½"))) {
 					lore.remove(itemLore);
 					log.log(" - Lore was sale info related, removing.");
 				}
 
 			}
-			Item.setLore(item, lore);
+			ItemUtility.setLore(item, lore);
 			log.log("- Round " + (i + 1) + " of lore cleanup done.");
 		}
 		log.log("Done.");
@@ -71,7 +72,7 @@ public class ShopBlock {
 	public static boolean hasLorePricing(ItemStack item) {
 
 		List<String> lore = new ArrayList<String>();
-		if (!Item.hasLore(item)) {
+		if (!ItemUtility.hasLore(item)) {
 			return false;
 		}
 
@@ -86,7 +87,7 @@ public class ShopBlock {
 				}
 				if (itemLore.contains(ChatColor.DARK_PURPLE + "- ")
 						&& (itemLore.contains("sold today")
-								|| itemLore.contains("£"))) {
+								|| itemLore.contains("ï¿½"))) {
 					return true;
 				}
 			}

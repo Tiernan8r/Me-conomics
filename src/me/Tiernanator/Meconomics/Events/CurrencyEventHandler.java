@@ -7,11 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.Factions.Factions.Faction;
 import me.Tiernanator.Factions.Factions.FactionAccessor;
 import me.Tiernanator.Meconomics.Currency;
 import me.Tiernanator.Meconomics.MeconomicsMain;
+import me.Tiernanator.Utilities.Colours.Colour;
 import me.Tiernanator.Utilities.MetaData.MetaData;
 
 public class CurrencyEventHandler implements Listener {

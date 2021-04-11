@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import me.Tiernanator.Colours.Colour;
 import me.Tiernanator.MagicSigns.SignBlock;
 import me.Tiernanator.MagicSigns.Events.CustomEvents.CustomSignClickEvent;
 import me.Tiernanator.Meconomics.MeconomicsMain;
 import me.Tiernanator.Meconomics.StockMarket.ShopBlock;
+import me.Tiernanator.Utilities.Colours.Colour;
 import me.Tiernanator.Utilities.Players.PlayerLogger;
 import me.Tiernanator.Utilities.Players.SelectAction;
 
@@ -98,8 +98,7 @@ public class ShopFrontInitialiser implements Listener {
 		if(isShop) {
 			
 			String ownerUUID = ShopBlock.getOwnerUUID(block);
-			PlayerLogger playerLogger = new PlayerLogger();
-			String ownerName = playerLogger.getPlayerNameByUUID(ownerUUID);
+			String ownerName = PlayerLogger.getPlayerNameByUUID(ownerUUID);
 			player.sendMessage(bad + "This chest has already been registered as a shop by " + highlight + ownerName + bad + ".");
 			event.setCancelled(true);
 			return;
